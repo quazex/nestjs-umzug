@@ -2,7 +2,7 @@
     "name": "@quazex/nestjs-umzug",
     "repository": {
         "type": "git",
-        "url": "git://github.com/quazex/nestjs-knex.git"
+        "url": "git://github.com/quazex/nestjs-umzug.git"
     },
     "description": "NestJS wrapper for Umzug migration tool",
     "version": "1.0.0",
@@ -21,6 +21,7 @@
     ],
     "keywords": [
         "migrations",
+        "umzug",
         "pg",
         "nestjs",
         "nest",
