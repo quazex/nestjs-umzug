@@ -1,0 +1,23 @@
+{
+    "maxWorkers": 1,
+    "testTimeout": 60000,
+    "moduleFileExtensions": ["ts", "js"],
+    "testMatch": [
+        "<rootDir>/**/*.spec.ts"
+    ],
+    "transform": {
+        "^.+\\.ts$": "ts-jest"
+    },
+    "roots": [
+        "source",
+        "tests"
+    ],
+    "moduleNameMapper": {
+        "source/(.*)": "<rootDir>/source/$1",
+        "@discovery/(.*)": "<rootDir>/source/discovery/$1",
+        "@errors/(.*)": "<rootDir>/source/errors/$1",
+        "@migrations/(.*)": "<rootDir>/source/migrations/$1",
+        "@postgres/(.*)": "<rootDir>/source/postgres/$1",
+        "@typing/(.*)": "<rootDir>/source/typing/$1"
+    }
+}
