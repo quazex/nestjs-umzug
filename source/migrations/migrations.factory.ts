@@ -1,7 +1,7 @@
 import { DynamicModule, Logger, Type } from '@nestjs/common';
 import { CommandFactory } from 'nest-commander';
 
-export class MigrationFactory {
+export class MigrationsFactory {
     public static async init(root: Type | DynamicModule): Promise<void> {
         const logger = new Logger('Migrations');
 

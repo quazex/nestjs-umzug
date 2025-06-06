@@ -29,23 +29,35 @@ The class name is automatically used as the migration name; otherwise, the class
 > ⚠️ **Attention:** The migration name must be unique across all migrations!
 
 ```typescript
+import { Migration, MigrationHandler } from '@quazex/nestjs-umzug';
+
 @Migration({
-  order: 1, // or timestamp
+    order: 1, // or timestamp
 })
-export class MyMigrationClass implements IMigrationHandler {
-  constructor(@Inject(SomeProvider) private readonly provider: SomeProvider) {
-  async up(): Promise<void> {}
-  async down(): Promise<void> {}
+export class MyMigrationClass implements MigrationHandler {
+    constructor(private readonly provider: SomeProvider) {}
+
+    async up(): Promise<void> {
+        await provider.create();
+    }
+
+    async down(): Promise<void> {
+        await provider.delete();
+    }
 }
 ```
 
 Next, you need to create a file to launch the CLI module and connect all the required providers and modules. Here you can import any modules from the main application that are needed for use in the migrations.
 
 ```typescript
+import { MigrationsFactory, UmzugPostgresModule } from '@quazex/nestjs-umzug';
+import { MyMigrationClass } from './migration';
+import { SomeProvider } from './provider';
+
 async function bootstrap() {
-    await MigrationFactory.init({
+    await MigrationsFactory.init({
         imports: [
-            MigrationsModule.forRoot({
+            UmzugPostgresModule.forRoot({
                 connection: 'postgres://postgres:postgres@localhost:5432/database',
             }),
         ],

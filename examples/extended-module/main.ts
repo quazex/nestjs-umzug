@@ -1,8 +1,8 @@
-import { MigrationFactory } from '../../source';
+import { MigrationsFactory } from '../../source';
 import { ExampleExtendedModule } from './module';
 
 const bootstrap = async(): Promise<void> => {
-    await MigrationFactory.init(ExampleExtendedModule);
+    await MigrationsFactory.init(ExampleExtendedModule);
 };
 
 bootstrap();
