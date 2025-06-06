@@ -1,6 +1,8 @@
+.docker
 .husky
 .vscode
 
+.editorconfig
 .releaserc.json
 tsconfig*
 eslintrc*
@@ -9,9 +11,10 @@ nest*json
 config*json
 *.md
 
-.git
+.git*
 .github
 .gitignore
 
+examples
 source
 tests
