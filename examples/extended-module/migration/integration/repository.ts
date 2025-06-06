@@ -10,12 +10,15 @@ export class ExampleExtendedRepository implements OnModuleInit, OnModuleDestroy 
     constructor(@InjectKnex() private readonly client: Knex) {}
 
     public async onModuleInit(): Promise<void> {
-        await this.client.schema.createTable(this.table, (table) => {
-            table.uuid('id');
-            table.text('name');
-            table.integer('count');
-            table.integer('timestamp');
-        });
+        const isExists = await this.client.schema.hasTable(this.table);
+        if (!isExists) {
+            await this.client.schema.createTable(this.table, (table) => {
+                table.uuid('id').unique();
+                table.text('name');
+                table.integer('count');
+                table.bigInteger('timestamp');
+            });
+        }
     }
 
     public async onModuleDestroy(): Promise<void> {
@@ -27,17 +30,15 @@ export class ExampleExtendedRepository implements OnModuleInit, OnModuleDestroy 
         return rows;
     }
 
-    public async upsert(document: ExtendedDoc[]): Promise<void> {
-        const columns: Array<Partial<keyof ExtendedDoc>> = [
-            'name',
-            'count',
-            'timestamp',
-        ];
-
+    public async upsert(documents: ExtendedDoc[]): Promise<void> {
         await this.client(this.table)
-            .upsert(document)
-            .onConflict(columns)
-            .merge(columns);
+            .insert(documents)
+            .onConflict('id')
+            .merge([
+                'name',
+                'count',
+                'timestamp',
+            ]);
     }
 
     public async clear(): Promise<void> {

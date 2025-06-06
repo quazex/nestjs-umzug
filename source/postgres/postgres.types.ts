@@ -6,7 +6,7 @@ import { type ClientConfig } from 'pg';
  */
 export interface MigrationPostgres {
     /**
-     * Postgres connection url
+     * Postgres connection url or object with config
      * @example "postgresql://postgres:postgres@localhost:5432/database"
      */
     connection: string | ClientConfig;

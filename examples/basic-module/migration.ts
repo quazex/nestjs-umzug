@@ -1,5 +1,4 @@
 import { faker } from '@faker-js/faker';
-import { InjectKnex } from '@quazex/nestjs-knex';
 import { MigrationHandler, Migration } from '../../source';
 import { ExampleBasicRepository } from './repository';
 
@@ -7,7 +6,7 @@ import { ExampleBasicRepository } from './repository';
     order: 1,
 })
 export class ExampleBasicMigration implements MigrationHandler {
-    constructor(@InjectKnex() private readonly repository: ExampleBasicRepository) {}
+    constructor(private readonly repository: ExampleBasicRepository) {}
 
     public async up(): Promise<void> {
         await this.repository.insert({

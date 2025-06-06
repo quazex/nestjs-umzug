@@ -10,12 +10,15 @@ export class ExampleBasicRepository implements OnModuleInit, OnModuleDestroy {
     constructor(@InjectKnex() private readonly client: Knex) {}
 
     public async onModuleInit(): Promise<void> {
-        await this.client.schema.createTable(this.table, (table) => {
-            table.uuid('id');
-            table.text('name');
-            table.integer('count');
-            table.integer('timestamp');
-        });
+        const isExists = await this.client.schema.hasTable(this.table);
+        if (!isExists) {
+            await this.client.schema.createTable(this.table, (table) => {
+                table.uuid('id').unique();
+                table.text('name');
+                table.integer('count');
+                table.bigInteger('timestamp');
+            });
+        }
     }
 
     public async onModuleDestroy(): Promise<void> {

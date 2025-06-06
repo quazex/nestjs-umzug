@@ -1,4 +1,4 @@
 export const ExampleExtendedConfig = {
-    url: 'postgres://postgres:postgres@localhost:5432/testing',
+    url: 'postgres://quazex:quazex@localhost:35432/quazex',
     timeout: 1_000,
 };

@@ -8,6 +8,7 @@ export * from './migrations/migrations.tokens';
 
 export * from './postgres/postgres.interfaces';
 export * from './postgres/postgres.module';
+export * from './postgres/postgres.tokens';
 export * from './postgres/postgres.types';
 
 export * from './typing/generating.interface';

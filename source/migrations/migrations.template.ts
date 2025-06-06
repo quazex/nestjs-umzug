@@ -14,12 +14,12 @@ export class MigrationsTemplate {
         const packageJSON = await MigrationsTemplate.readPackage();
 
         const template = dedent(`
-            import { IMigrationHandler, Migration } from '${packageJSON.name}';
+            import { MigrationHandler, Migration } from '${packageJSON.name}';
 
             @Migration({
                 order: ${timestamp},
             })
-            export class MigrationProvider${timestamp} implements IMigrationHandler {
+            export class MigrationProvider${timestamp} implements MigrationHandler {
                 public async up(): Promise<void> {
                     throw new Error('Method not implemented');
                 }

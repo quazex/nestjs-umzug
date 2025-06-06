@@ -37,6 +37,9 @@
         "dev:lint": "eslint ./source --ext .ts",
         "dev:format": "npm run dev:lint -- --fix",
         "dev:test": "jest",
+        "example:basic:up": "ts-node -r tsconfig-paths/register examples/basic-module/main.ts migrate up",
+        "example:basic:generate": "ts-node -r tsconfig-paths/register examples/basic-module/main.ts migrate generate",
+        "example:extended:up": "ts-node -r tsconfig-paths/register examples/extended-module/main.ts migrate up",
         "commit": "git-cz",
         "release": "semantic-release",
         "prepare": "husky"
