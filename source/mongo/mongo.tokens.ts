@@ -1,0 +1,3 @@
+export const MONGO_CONFIG = Symbol('UMZUG_MONGO_CONFIG');
+export const MONGO_CLIENT = Symbol('UMZUG_MONGO_CLIENT');
+export const MONGO_COLLECTION = Symbol('UMZUG_MONGO_COLLECTION');

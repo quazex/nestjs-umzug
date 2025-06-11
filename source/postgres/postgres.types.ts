@@ -2,6 +2,15 @@ import { MigrationGenerating } from '@typing/generating.interface';
 import { type ClientConfig } from 'pg';
 
 /**
+ * @private
+ */
+export interface PostgresDocument {
+    id: string;
+    name: string;
+    timestamp: Date;
+}
+
+/**
  * Migration configuration
  */
 export interface MigrationPostgres {
@@ -12,7 +21,7 @@ export interface MigrationPostgres {
     connection: string | ClientConfig;
 
     /**
-     * Collection name with history of executed migration
+     * Table name with history of executed migration
      * @default "migrations"
      */
     table?: string;

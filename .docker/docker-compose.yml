@@ -15,7 +15,7 @@ services:
       POSTGRES_DB: quazex
     volumes:
       - quazex_migrator_volume:/var/lib/postgresql/data
-      - .docker/postgres.init.sql:/docker-entrypoint-initdb.d/postgres.init.sql
+      - ./.docker/postgres.init.sql:/docker-entrypoint-initdb.d/postgres.init.sql
     networks:
       - quazex_migrator_network
     ports:

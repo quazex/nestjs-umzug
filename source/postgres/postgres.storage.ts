@@ -1,11 +1,11 @@
 import { Inject, Injectable, OnModuleInit } from '@nestjs/common';
-import { StorageDocument, StorageParams } from '@typing/storage.interfaces';
+import { StorageParams } from '@typing/storage.interfaces';
 import { Client } from 'pg';
 import { UmzugStorage } from 'umzug';
 import { v5 as UUIDv5 } from 'uuid';
 import { PostgresDefaults } from './postgres.defaults';
 import { POSTGRES_CLIENT, POSTGRES_CONFIG } from './postgres.tokens';
-import { MigrationPostgres } from './postgres.types';
+import { MigrationPostgres, PostgresDocument } from './postgres.types';
 
 @Injectable()
 export class PostgresStorage implements UmzugStorage, OnModuleInit {
@@ -23,7 +23,7 @@ export class PostgresStorage implements UmzugStorage, OnModuleInit {
     }
 
     public async executed(): Promise<string[]> {
-        const documents = await this.client.query<StorageDocument>(`SELECT name FROM ${this.table} ORDER BY name ASC`);
+        const documents = await this.client.query<PostgresDocument>(`SELECT name FROM ${this.table} ORDER BY name ASC`);
         return documents.rows.map((row) => row.name);
     }
 
