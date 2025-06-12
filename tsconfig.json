@@ -29,10 +29,8 @@
 
         "baseUrl": "./source",
         "paths": {
-            "@discovery/*": ["discovery/*"],
             "@errors/*": ["errors/*"],
             "@migrations/*": ["migrations/*"],
-            "@postgres/*": ["postgres/*"],
             "@typing/*": ["typing/*"]
         }
     },

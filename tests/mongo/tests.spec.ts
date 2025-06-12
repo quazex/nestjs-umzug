@@ -2,7 +2,7 @@ import { afterAll, beforeAll, describe, expect, test } from '@jest/globals';
 import { TestingApplication } from './tests.application';
 import { TestsRepository } from './tests.repository';
 
-describe('Umzug Postgres', () => {
+describe('Umzug Mongo', () => {
     const testingApp = new TestingApplication();
 
     beforeAll(testingApp.init.bind(testingApp));

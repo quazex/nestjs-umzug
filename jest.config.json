@@ -14,10 +14,8 @@
     ],
     "moduleNameMapper": {
         "source/(.*)": "<rootDir>/source/$1",
-        "@discovery/(.*)": "<rootDir>/source/discovery/$1",
         "@errors/(.*)": "<rootDir>/source/errors/$1",
         "@migrations/(.*)": "<rootDir>/source/migrations/$1",
-        "@postgres/(.*)": "<rootDir>/source/postgres/$1",
         "@typing/(.*)": "<rootDir>/source/typing/$1"
     }
 }
