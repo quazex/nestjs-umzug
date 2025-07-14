@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { KnexModule } from '@quazex/nestjs-knex';
-import { UmzugPostgresModule } from 'index';
+import { UmzugPostgresModule } from '../../source';
 import { ExampleExtendedConfig } from './config';
 import { ExampleMigrationModule } from './migration/migration.module';
 

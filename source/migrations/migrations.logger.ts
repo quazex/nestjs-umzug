@@ -1,5 +1,5 @@
 import { Logger } from '@nestjs/common';
-import { LogInfo, LogMessage } from '@typing/logger.interfaces';
+import { LogInfo, LogMessage } from '../typing/logger.interfaces';
 
 export class MigrationsLogger {
     private readonly logger = new Logger('Migrations');

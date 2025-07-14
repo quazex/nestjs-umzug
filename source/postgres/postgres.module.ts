@@ -1,7 +1,7 @@
-import { MigrationsCommands } from '@migrations/migrations.commands';
-import { MigrationsDiscovery } from '@migrations/migrations.discovery';
 import { DynamicModule } from '@nestjs/common';
 import { DiscoveryModule } from '@nestjs/core';
+import { MigrationsCommands } from '../migrations/migrations.commands';
+import { MigrationsDiscovery } from '../migrations/migrations.discovery';
 import { PostgresBootstrap } from './postgres.bootstrap';
 import { MigrationPostgresAsync } from './postgres.interfaces';
 import { PostgresProviders } from './postgres.providers';

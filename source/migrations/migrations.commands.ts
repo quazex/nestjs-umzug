@@ -1,7 +1,7 @@
-import { CommandError } from '@errors/command.error';
 import { Inject, Logger } from '@nestjs/common';
 import { Command, CommandRunner } from 'nest-commander';
 import { Umzug } from 'umzug';
+import { CommandError } from '../errors/command.error';
 import { MigrationsTemplate } from './migrations.template';
 import { UMZUG_PROVIDER_KEY } from './migrations.tokens';
 
