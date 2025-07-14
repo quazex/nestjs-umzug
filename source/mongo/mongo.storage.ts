@@ -1,8 +1,8 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { StorageParams } from '@typing/storage.interfaces';
 import { Collection } from 'mongodb';
 import { UmzugStorage } from 'umzug';
 import { v5 as UUIDv5 } from 'uuid';
+import { StorageParams } from '../typing/storage.interfaces';
 import { MONGO_COLLECTION } from './mongo.tokens';
 import { MongoDocument } from './mongo.types';
 

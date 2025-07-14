@@ -1,8 +1,8 @@
 import { Inject, Injectable, OnModuleInit } from '@nestjs/common';
-import { StorageParams } from '@typing/storage.interfaces';
 import { Client } from 'pg';
 import { UmzugStorage } from 'umzug';
 import { v5 as UUIDv5 } from 'uuid';
+import { StorageParams } from '../typing/storage.interfaces';
 import { PostgresDefaults } from './postgres.defaults';
 import { POSTGRES_CLIENT, POSTGRES_CONFIG } from './postgres.tokens';
 import { MigrationPostgres, PostgresDocument } from './postgres.types';

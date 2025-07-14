@@ -1,9 +1,9 @@
-import { MigrationsDiscovery } from '@migrations/migrations.discovery';
-import { MigrationsLogger } from '@migrations/migrations.logger';
-import { UMZUG_PROVIDER_KEY } from '@migrations/migrations.tokens';
 import { FactoryProvider, Provider, ValueProvider } from '@nestjs/common';
 import { Client } from 'pg';
 import { Umzug } from 'umzug';
+import { MigrationsDiscovery } from '../migrations/migrations.discovery';
+import { MigrationsLogger } from '../migrations/migrations.logger';
+import { UMZUG_PROVIDER_KEY } from '../migrations/migrations.tokens';
 import { MigrationPostgresAsync, MigrationPostgresFactory } from './postgres.interfaces';
 import { PostgresStorage } from './postgres.storage';
 import { POSTGRES_CLIENT, POSTGRES_CONFIG } from './postgres.tokens';

@@ -1,5 +1,5 @@
-import { MigrationGenerating } from '@typing/generating.interface';
 import { MongoClientOptions } from 'mongodb';
+import { MigrationGenerating } from '../typing/generating.interface';
 
 /**
  * @private

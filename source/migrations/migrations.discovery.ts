@@ -1,9 +1,9 @@
-import { DuplicateError } from '@errors/duplicate.error';
-import { HandlerError } from '@errors/handler.error';
 import { Injectable } from '@nestjs/common';
 import { DiscoveryService, Reflector } from '@nestjs/core';
-import { MigrationParams } from '@typing/params.interfaces';
-import { MigrationProvider } from '@typing/providers.interface';
+import { DuplicateError } from '../errors/duplicate.error';
+import { HandlerError } from '../errors/handler.error';
+import { MigrationParams } from '../typing/params.interfaces';
+import { MigrationProvider } from '../typing/providers.interface';
 import { UMZUG_METADATA_KEY } from './migrations.tokens';
 
 @Injectable()

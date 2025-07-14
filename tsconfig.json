@@ -25,14 +25,7 @@
         "emitDecoratorMetadata": true,
 
         "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true,
-
-        "baseUrl": "./source",
-        "paths": {
-            "@errors/*": ["errors/*"],
-            "@migrations/*": ["migrations/*"],
-            "@typing/*": ["typing/*"]
-        }
+        "forceConsistentCasingInFileNames": true
     },
     "include": [
         "@types",
@@ -43,6 +36,5 @@
     "exclude": [
         "lib",
         "node_modules",
-        "vite*"
     ]
 }

@@ -1,9 +1,9 @@
-import { MigrationsDiscovery } from '@migrations/migrations.discovery';
-import { MigrationsLogger } from '@migrations/migrations.logger';
-import { UMZUG_PROVIDER_KEY } from '@migrations/migrations.tokens';
 import { FactoryProvider, Provider, ValueProvider } from '@nestjs/common';
 import { Collection, MongoClient } from 'mongodb';
 import { Umzug } from 'umzug';
+import { MigrationsDiscovery } from '../migrations/migrations.discovery';
+import { MigrationsLogger } from '../migrations/migrations.logger';
+import { UMZUG_PROVIDER_KEY } from '../migrations/migrations.tokens';
 import { MongoDefaults } from './mongo.defaults';
 import { MigrationMongoAsync, MigrationMongoFactory } from './mongo.interfaces';
 import { MongoStorage } from './mongo.storage';

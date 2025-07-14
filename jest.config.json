@@ -11,11 +11,5 @@
     "roots": [
         "source",
         "tests"
-    ],
-    "moduleNameMapper": {
-        "source/(.*)": "<rootDir>/source/$1",
-        "@errors/(.*)": "<rootDir>/source/errors/$1",
-        "@migrations/(.*)": "<rootDir>/source/migrations/$1",
-        "@typing/(.*)": "<rootDir>/source/typing/$1"
-    }
+    ]
 }

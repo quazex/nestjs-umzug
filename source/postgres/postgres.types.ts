@@ -1,5 +1,5 @@
-import { MigrationGenerating } from '@typing/generating.interface';
 import { type ClientConfig } from 'pg';
+import { MigrationGenerating } from '../typing/generating.interface';
 
 /**
  * @private
