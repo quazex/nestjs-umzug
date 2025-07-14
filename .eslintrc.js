@@ -7,8 +7,9 @@ module.exports = {
         sourceType: 'module',
     },
     ignorePatterns: [
-        'lib',
+        'lib/**',
         '.eslintrc.*',
+        'vite*',
     ],
     rules: {
         '@typescript-eslint/no-explicit-any': ['off'],
