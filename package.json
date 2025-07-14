@@ -31,9 +31,9 @@
     ],
     "scripts": {
         "build:clear": "rimraf lib",
-        "build:compile": "npm run build:clear && tsc --project tsconfig.build.json",
+        "build:compile": "vite build",
         "dev:watch": "tsc --watch",
-        "dev:check": "tsc --noEmit",
+        "dev:check": "tsc --noEmit --project tsconfig.build.json",
         "dev:lint": "eslint ./source --ext .ts",
         "dev:format": "npm run dev:lint -- --fix",
         "dev:test": "jest",
@@ -83,7 +83,10 @@
         "ts-jest": "29.4.0",
         "ts-node": "10.9.2",
         "type-fest": "4.41.0",
-        "typescript": "5.8.3"
+        "typescript": "5.8.3",
+        "vite": "6.3.5",
+        "vite-plugin-dts": "4.5.4",
+        "vite-tsconfig-paths": "5.1.4"
     },
     "config": {
         "commitizen": {

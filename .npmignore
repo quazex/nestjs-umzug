@@ -9,6 +9,7 @@ eslintrc*
 jest*json
 nest*json
 config*json
+vite*
 *.md
 
 .git*
