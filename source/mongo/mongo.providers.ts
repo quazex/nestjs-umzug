@@ -8,17 +8,17 @@ import { MongoDefaults } from './mongo.defaults';
 import { MigrationMongoAsync, MigrationMongoFactory } from './mongo.interfaces';
 import { MongoStorage } from './mongo.storage';
 import { MONGO_CLIENT, MONGO_COLLECTION, MONGO_CONFIG } from './mongo.tokens';
-import { MigrationMongo } from './mongo.types';
+import { MigrationMongoConfig } from './mongo.types';
 
 export class MongoProviders {
-    public static getOptions(params: MigrationMongo): ValueProvider<MigrationMongo> {
+    public static getOptions(params: MigrationMongoConfig): ValueProvider<MigrationMongoConfig> {
         return {
             provide: MONGO_CONFIG,
             useValue: params,
         };
     }
 
-    public static getAsyncOptions(options: MigrationMongoAsync): Provider<MigrationMongo> {
+    public static getAsyncOptions(options: MigrationMongoAsync): Provider<MigrationMongoConfig> {
         if (options.useFactory) {
             return {
                 provide: MONGO_CONFIG,
@@ -29,7 +29,7 @@ export class MongoProviders {
         if (options.useExisting) {
             return {
                 provide: MONGO_CONFIG,
-                useFactory: async(factory: MigrationMongoFactory): Promise<MigrationMongo> => {
+                useFactory: async(factory: MigrationMongoFactory): Promise<MigrationMongoConfig> => {
                     const client = await factory.createUmzugMongo();
                     return client;
                 },
@@ -42,7 +42,7 @@ export class MongoProviders {
     public static getClient(): FactoryProvider<MongoClient> {
         return {
             provide: MONGO_CLIENT,
-            useFactory: (configuration: MigrationMongo): MongoClient => {
+            useFactory: (configuration: MigrationMongoConfig): MongoClient => {
                 const client = new MongoClient(configuration.uri, configuration.options);
                 return client;
             },
@@ -56,7 +56,7 @@ export class MongoProviders {
         return {
             provide: MONGO_COLLECTION,
             useFactory: (
-                config: MigrationMongo,
+                config: MigrationMongoConfig,
                 client: MongoClient,
             ): Collection => {
                 const name = config.collection ?? MongoDefaults.collection;
@@ -73,7 +73,7 @@ export class MongoProviders {
         return {
             provide: UMZUG_PROVIDER_KEY,
             useFactory: (
-                configuration: MigrationMongo,
+                configuration: MigrationMongoConfig,
                 discovery: MigrationsDiscovery,
                 persistence: MongoStorage,
             ): Umzug => {

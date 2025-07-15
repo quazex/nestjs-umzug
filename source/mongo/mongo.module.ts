@@ -3,19 +3,19 @@ import { DiscoveryModule } from '@nestjs/core';
 import { MigrationsCommands } from '../migrations/migrations.commands';
 import { MigrationsDiscovery } from '../migrations/migrations.discovery';
 import { MongoBootstrap } from './mongo.bootstrap';
-import { MigrationMongoAsync } from './mongo.interfaces';
+import { MigrationMongoAsync, MigrationMongoSync } from './mongo.interfaces';
 import { MongoProviders } from './mongo.providers';
 import { MongoStorage } from './mongo.storage';
-import { MigrationMongo } from './mongo.types';
 
 export class UmzugMongoModule {
-    public static forRoot(params: MigrationMongo): DynamicModule {
+    public static forRoot({ isGlobal, ...params }: MigrationMongoSync): DynamicModule {
         const OptionsProvider = MongoProviders.getOptions(params);
         const ClientProvider = MongoProviders.getClient();
         const CollProvider = MongoProviders.getCollection();
         const UmzugProvider = MongoProviders.getUmzug();
 
         const dynamicModule: DynamicModule = {
+            global: isGlobal,
             module: UmzugMongoModule,
             imports: [
                 DiscoveryModule,
@@ -43,6 +43,7 @@ export class UmzugMongoModule {
         const UmzugProvider = MongoProviders.getUmzug();
 
         const dynamicModule: DynamicModule = {
+            global: params.isGlobal,
             module: UmzugMongoModule,
             imports: [
                 DiscoveryModule,
