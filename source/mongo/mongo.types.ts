@@ -13,7 +13,7 @@ export interface MongoDocument {
 /**
  * Migration configuration
  */
-export interface MigrationMongo {
+export interface MigrationMongoConfig {
     /**
      * Mongo connection url or object with config
      * @example "mongo://mongo:mongo@localhost:27017/database"

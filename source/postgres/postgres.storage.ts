@@ -5,14 +5,14 @@ import { v5 as UUIDv5 } from 'uuid';
 import { StorageParams } from '../typing/storage.interfaces';
 import { PostgresDefaults } from './postgres.defaults';
 import { POSTGRES_CLIENT, POSTGRES_CONFIG } from './postgres.tokens';
-import { MigrationPostgres, PostgresDocument } from './postgres.types';
+import { MigrationPostgresConfig, PostgresDocument } from './postgres.types';
 
 @Injectable()
 export class PostgresStorage implements UmzugStorage, OnModuleInit {
     private readonly table: string;
 
     constructor(
-        @Inject(POSTGRES_CONFIG) config: MigrationPostgres,
+        @Inject(POSTGRES_CONFIG) config: MigrationPostgresConfig,
         @Inject(POSTGRES_CLIENT) private readonly client: Client,
     ) {
         this.table = config.table ?? PostgresDefaults.table;

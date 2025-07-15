@@ -3,18 +3,18 @@ import { DiscoveryModule } from '@nestjs/core';
 import { MigrationsCommands } from '../migrations/migrations.commands';
 import { MigrationsDiscovery } from '../migrations/migrations.discovery';
 import { PostgresBootstrap } from './postgres.bootstrap';
-import { MigrationPostgresAsync } from './postgres.interfaces';
+import { MigrationPostgresAsync, MigrationPostgresSync } from './postgres.interfaces';
 import { PostgresProviders } from './postgres.providers';
 import { PostgresStorage } from './postgres.storage';
-import { MigrationPostgres } from './postgres.types';
 
 export class UmzugPostgresModule {
-    public static forRoot(params: MigrationPostgres): DynamicModule {
+    public static forRoot({ isGlobal, ...params }: MigrationPostgresSync): DynamicModule {
         const OptionsProvider = PostgresProviders.getOptions(params);
         const ClientProvider = PostgresProviders.getClient();
         const UmzugProvider = PostgresProviders.getUmzug();
 
         const dynamicModule: DynamicModule = {
+            global: isGlobal,
             module: UmzugPostgresModule,
             imports: [
                 DiscoveryModule,
@@ -40,6 +40,7 @@ export class UmzugPostgresModule {
         const UmzugProvider = PostgresProviders.getUmzug();
 
         const dynamicModule: DynamicModule = {
+            global: params.isGlobal,
             module: UmzugPostgresModule,
             imports: [
                 DiscoveryModule,

@@ -7,17 +7,17 @@ import { UMZUG_PROVIDER_KEY } from '../migrations/migrations.tokens';
 import { MigrationPostgresAsync, MigrationPostgresFactory } from './postgres.interfaces';
 import { PostgresStorage } from './postgres.storage';
 import { POSTGRES_CLIENT, POSTGRES_CONFIG } from './postgres.tokens';
-import { MigrationPostgres } from './postgres.types';
+import { MigrationPostgresConfig } from './postgres.types';
 
 export class PostgresProviders {
-    public static getOptions(params: MigrationPostgres): ValueProvider<MigrationPostgres> {
+    public static getOptions(params: MigrationPostgresConfig): ValueProvider<MigrationPostgresConfig> {
         return {
             provide: POSTGRES_CONFIG,
             useValue: params,
         };
     }
 
-    public static getAsyncOptions(options: MigrationPostgresAsync): Provider<MigrationPostgres> {
+    public static getAsyncOptions(options: MigrationPostgresAsync): Provider<MigrationPostgresConfig> {
         if (options.useFactory) {
             return {
                 provide: POSTGRES_CONFIG,
@@ -28,7 +28,7 @@ export class PostgresProviders {
         if (options.useExisting) {
             return {
                 provide: POSTGRES_CONFIG,
-                useFactory: async(factory: MigrationPostgresFactory): Promise<MigrationPostgres> => {
+                useFactory: async(factory: MigrationPostgresFactory): Promise<MigrationPostgresConfig> => {
                     const client = await factory.createUmzugPostgres();
                     return client;
                 },
@@ -41,7 +41,7 @@ export class PostgresProviders {
     public static getClient(): FactoryProvider<Client> {
         return {
             provide: POSTGRES_CLIENT,
-            useFactory: (configuration: MigrationPostgres): Client => {
+            useFactory: (configuration: MigrationPostgresConfig): Client => {
                 const client = new Client(configuration.connection);
                 return client;
             },
@@ -55,7 +55,7 @@ export class PostgresProviders {
         return {
             provide: UMZUG_PROVIDER_KEY,
             useFactory: (
-                configuration: MigrationPostgres,
+                configuration: MigrationPostgresConfig,
                 discovery: MigrationsDiscovery,
                 persistence: PostgresStorage,
             ): Umzug => {

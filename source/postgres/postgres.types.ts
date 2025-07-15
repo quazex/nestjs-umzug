@@ -13,7 +13,7 @@ export interface PostgresDocument {
 /**
  * Migration configuration
  */
-export interface MigrationPostgres {
+export interface MigrationPostgresConfig {
     /**
      * Postgres connection url or object with config
      * @example "postgresql://postgres:postgres@localhost:5432/database"
